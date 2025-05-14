@@ -1,109 +1,1170 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Prakhar Singh - Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="script.js" defer></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-</head>
-<body>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Prakhar Singh - Portfolio
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+  <style>
+   @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Ubuntu', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary-color: #191919;
+            --secondary-color: #212121;
+            --accent-color: #7614ff;
+            --light-color: #ffffff;
+            --dark-color: #000000;
+        }
+
+        body {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 100px;
+            background-color: var(--secondary-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            cursor: pointer;
+            color: var(--light-color);
+            text-decoration: none;
+        }
+
+        .navbar a {
+            position: relative;
+            font-size: 16px;
+            font-weight: 500;
+            margin-left: 35px;
+            text-decoration: none;
+            color: var(--light-color);
+        }
+
+        .navbar a::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--light-color);
+            transition: 0.3s;
+        }
+
+        .navbar a:hover::before {
+            width: 100%;
+        }
+
+        /* Home Section */
+        .home {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            padding: 100px;
+            display: flex;
+            align-items: center;
+            background-color: var(--primary-color);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .home-content {
+            max-width: 800px;
+        }
+
+        .home-content h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .home-content h1 {
+            font-size: 50px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .home-content p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--accent-color);
+            color: var(--light-color);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(118, 20, 255, 0.3);
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #8f42ff;
+            box-shadow: 0 0 15px rgba(118, 20, 255, 0.5);
+        }
+
+        .social-media {
+            margin-top: 30px;
+        }
+
+        .social-media a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            margin-right: 15px;
+            text-decoration: none;
+            color: var(--light-color);
+            transition: 0.3s;
+        }
+
+        .social-media a i {
+            font-size: 20px;
+        }
+
+        .social-media a:hover {
+            background-color: #8f42ff;
+            box-shadow: 0 0 10px rgba(118, 20, 255, 0.5);
+            transform: translateY(-3px);
+        }
+
+        /* Common Section Styles */
+        section {
+            min-height: 100vh;
+            padding: 100px;
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .heading h2 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .heading h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--secondary-color);
+        }
+
+        .about-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .about-img {
+            width: 35%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            transition: 0.3s;
+        }
+
+        .about-text {
+            width: 60%;
+        }
+
+        .about-text h3 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .tab-titles {
+            display: flex;
+            margin-top: 30px;
+        }
+
+        .tab-links {
+            margin-right: 50px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .tab-links::after {
+            content: '';
+            width: 0;
+            height: 3px;
+            background-color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            transition: 0.3s;
+        }
+
+        .tab-links.active-link::after {
+            width: 100%;
+        }
+
+        .tab-contents {
+            margin-top: 30px;
+        }
+
+        .tab-contents ul li {
+            list-style-type: none;
+            margin-bottom: 15px;
+        }
+
+        .tab-contents ul li span {
+            color: #a970ff;
+            font-weight: 500;
+        }
+
+        .tab-contents {
+            display: none;
+        }
+
+        .tab-contents.active-tab {
+            display: block;
+        }
+
+        /* Skills Section */
+        .skills {
+            background-color: var(--primary-color);
+        }
+
+        .skill-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .skill-box {
+            background-color: var(--secondary-color);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: 0.3s;
+            border-bottom: 3px solid var(--accent-color);
+        }
+
+        .skill-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .skill-box h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .skill-box h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+            bottom: 0;
+            left: 0;
+        }
+
+        .skill-box ul {
+            padding-left: 20px;
+        }
+
+        .skill-box ul li {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        /* Projects Section */
+        .projects {
+            background-color: var(--secondary-color);
+        }
+
+        .project-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .project-box {
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: 0.3s;
+            border-bottom: 3px solid var(--accent-color);
+        }
+
+        .project-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            background-color: #252525;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .project-img i {
+            font-size: 60px;
+            color: var(--accent-color);
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-content h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .project-content p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Education Section */
+        .education {
+            background-color: var(--primary-color);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--accent-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .container {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+        }
+
+        .container.left {
+            left: 0;
+        }
+
+        .container.right {
+            left: 50%;
+        }
+
+        .container::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: var(--accent-color);
+            border: 4px solid var(--light-color);
+            top: 20px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .container.right::after {
+            left: -10px;
+        }
+
+        .content {
+            padding: 20px;
+            background-color: var(--secondary-color);
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .content h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .content h4 {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #a970ff;
+        }
+
+        .content p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--secondary-color);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .contact-card {
+            background-color: var(--secondary-color);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: 0.3s;
+            border-bottom: 3px solid var(--accent-color);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .contact-card i {
+            font-size: 40px;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .contact-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .contact-card p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .input-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .input-row .input-group, .input-group {
+            flex-basis: 48%;
+        }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: var(--secondary-color);
+            border: 1px solid #333;
+            outline: none;
+            border-radius: 5px;
+            color: var(--light-color);
+            font-size: 16px;
+        }
+
+        form button {
+            background-color: var(--accent-color);
+            color: var(--light-color);
+            font-size: 16px;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        form button:hover {
+            background-color: #8f42ff;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            padding: 20px 100px;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 16px;
+        }
+
+        /* Media Queries */
+        @media (max-width: 1024px) {
+            header {
+                padding: 20px 50px;
+            }
+
+            section {
+                padding: 80px 50px;
+            }
+
+            .home-content h1 {
+                font-size: 40px;
+            }
+
+            .home-content h3 {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 30px;
+            }
+
+            section {
+                padding: 70px 30px;
+            }
+
+            .home-content h1 {
+                font-size: 32px;
+            }
+
+            .home-content h3 {
+                font-size: 24px;
+            }
+
+            .home-content p {
+                font-size: 16px;
+            }
+
+            .about-img, .about-text {
+                width: 100%;
+            }
+
+            .about-img {
+                margin-bottom: 30px;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .container.right {
+                left: 0;
+            }
+
+            .container.left::after, .container.right::after {
+                left: 15px;
+            }
+
+            .input-row {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 10px 20px;
+            }
+
+            .navbar a {
+                margin-left: 15px;
+                font-size: 14px;
+            }
+
+            .logo {
+                font-size: 18px;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+
+            .home-content h1 {
+                font-size: 28px;
+            }
+
+            .home-content h3 {
+                font-size: 20px;
+            }
+
+            .heading h2 {
+                font-size: 32px;
+            }
+
+            .tab-links {
+                margin-right: 20px;
+                font-size: 16px;
+            }
+        }
+  </style>
+ </head>
+ <body>
+  <!-- Header -->
   <header>
-    <h1 class="logo">PRAKHAR SINGH</h1>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="#home" class="active">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+   <a class="logo" href="#">
+    Prakhar Singh
+   </a>
+   <nav class="navbar">
+    <a class="active" href="#home">
+     Home
+    </a>
+    <a href="#about">
+     About
+    </a>
+    <a href="#skills">
+     Skills
+    </a>
+    <a href="#projects">
+     Projects
+    </a>
+    <a href="#education">
+     Education
+    </a>
+    <a href="#contact">
+     Contact
+    </a>
+   </nav>
   </header>
-
-  <section id="home" class="home">
-    <div class="home-content">
-      <p class="hello">HELLO!</p>
-      <h2>I'm a <span>web developer</span><br/>based in India</h2>
-      <div class="buttons">
-        <a href="https://drive.google.com/file/d/1A4VVSr4a-s4_UBhlxDWoi2vDcHNN3DZk/view?usp=drive_link" target="_blank" class="btn yellow">Resume</a>
-        <a href="#projects" class="btn">My Works</a>
-      </div>
-      <div class="socials">
-        <a href="https://github.com/prakharrrrrrsingh">GitHub</a>
-        <a href="https://www.linkedin.com/in/prakharrrrr-singh-/">LinkedIn</a>
-        <a href="mailto:prakhar6122@gmail.com">Email</a>
-      </div>
-    </div>
-    <div class="home-img">
-      <img src="profile.png" alt="Prakhar Singh" class="profile-img" />
-
-    </div>
-  </section>
-
-  <section id="about" class="about">
-    <h2>About Me</h2>
+  <!-- Home Section -->
+  <section class="home" id="home">
+   <div class="home-content">
+    <h3>
+     Hello, I'm
+    </h3>
+    <h1>
+     Prakhar Singh
+    </h1>
+    <h3>
+     MERN Stack Developer
+    </h3>
     <p>
-      Hey there! I'm Prakhar Singh, a passionate MERN Stack Developer who thrives on turning complex problems into simple, elegant web solutions. From crafting responsive frontends to building robust backends, I love every part of the development journey.
-
-With hands-on experience in building real-world projects like a Duplicate File Remover desktop app and a Mars Rover Navigation simulator, I bring both creativity and performance to the table. I'm always eager to learn, adapt, and push the limits of what I can build.
-
-When I'm not coding, you’ll probably find me exploring the latest tech trends, optimizing my workflows, or collaborating on exciting open-source projects.
+     I'm a Computer Science Engineering student at KIIT Bhubaneswar with a passion for building scalable, high-performance web applications. From system-level programming in C++ to full-stack development using the MERN stack, I love solving problems and delivering real-world solutions.
     </p>
-  </section>
-
-  <section id="skills" class="skills">
-    <h2>Skills</h2>
-    <ul>
-      <li>HTML / CSS / JavaScript</li>
-      <li>React.js / Node.js / Express</li>
-      <li>MongoDB / Mongoose</li>
-      <li>Git / GitHub</li>
-      <li>Data Structures & Algorithms</li>
-    </ul>
-  </section>
-
-  <section id="projects" class="projects">
-    <h2>Projects</h2>
-    <div class="project">
-      <h3>🚀 Duplicate File Remover</h3>
-      <p>Tech Stack: Node.js, Crypto, File System (fs), Inquirer.js
-        A powerful CLI-based utility designed to detect and remove duplicate files from selected directories using content-based hashing algorithms (SHA-256).
-        
-        Efficiently scans two user-selected folders and compares files based on content, not just name or size.
-        
-        Provides a preview of duplicates before deletion with a confirmation prompt.
-        
-        Built with scalability in mind for handling large datasets and nested folder structures.
-        
-        Clean, user-friendly CLI powered by Inquirer.js for interactive file selection.</p>
+    <a class="btn" href="#projects">
+     View My Work
+    </a>
+    <a class="btn" href="https://drive.google.com/uc?export=download&amp;id=1A4VVSr4a-s4_UBhlxDWoi2vDcHNN3DZk" style="margin-left: 15px;" target="_blank">
+     View My Resume
+    </a>
+    <!-- <div class="resume-download">
+     <a class="btn" href="https://drive.google.com/uc?export=download&amp;id=1A4VVSr4a-s4_UBhlxDWoi2vDcHNN3DZk" target="_blank">
+      Download Resume
+     </a>
+    </div> -->
+    <div class="social-media">
+     <a href="https://github.com/prakharrrrrrsingh" target="_blank">
+      <i class="fab fa-github">
+      </i>
+     </a>
+     <a href="https://linkedin.com/in/prakharrrrr-singh-/" target="_blank">
+      <i class="fab fa-linkedin-in">
+      </i>
+     </a>
+     <a href="mailto:prakhar6122@gmail.com">
+      <i class="fas fa-envelope">
+      </i>
+     </a>
     </div>
-    <div class="project">
-      <h3>🛰️ Navigation to Mars Rover</h3>
-      <p>Tech Stack: HTML, CSS, JavaScript
-        An interactive simulation that replicates a Mars rover’s autonomous path planning using grid-based logic and real-time command parsing.
-        
-        Accepts user input to define a starting point, target, and obstacle positions on a 2D grid.
-        
-        Implements search algorithms like A* and Best-First Search for intelligent pathfinding.
-        
-        Visualizes the rover’s movement and decisions dynamically on a web interface.
-        
-        Designed for educational and demonstrative purposes to showcase algorithmic thinking in a visual format.</p>
+   </div>
+  </section>
+  <!-- About Section -->
+  <section class="about" id="about">
+   <div class="heading">
+    <h2>
+     About Me
+    </h2>
+   </div>
+   <div class="about-content">
+    <div class="about-img">
+     <img alt="Prakhar Singh" src="Ghibli_Style_Profile_Compressed.jpg"/>
     </div>
+    <div class="about-text">
+     <h3>
+      MERN Stack Developer
+     </h3>
+     <p>
+      I'm Prakhar Singh, a Computer Science Engineering student at KIIT Bhubaneswar passionate about web development and software engineering. I specialize in building robust web applications using the MERN stack and have experience in system-level programming with C++.
+     </p>
+     <p>
+      My goal is to create efficient, user-friendly applications that solve real-world problems. I'm constantly learning new technologies and techniques to improve my skills and stay current with industry trends.
+     </p>
+     <div class="tab-titles">
+      <p class="tab-links active-link" onclick="openTab('skills')">
+       Skills
+      </p>
+      <p class="tab-links" onclick="openTab('experience')">
+       Experience
+      </p>
+      <p class="tab-links" onclick="openTab('education')">
+       Education
+      </p>
+     </div>
+     <div class="tab-contents active-tab" id="skills-tab">
+      <ul>
+       <li>
+        <span>
+         Frontend Development
+        </span>
+        <br/>
+        Building responsive websites with React.js, HTML5, CSS3, and Tailwind CSS
+       </li>
+       <li>
+        <span>
+         Backend Development
+        </span>
+        <br/>
+        Creating robust server-side applications with Node.js, Express.js, and MongoDB
+       </li>
+       <li>
+        <span>
+         Programming
+        </span>
+        <br/>
+        Proficient in C++, JavaScript, and Python
+       </li>
+      </ul>
+     </div>
+     <div class="tab-contents" id="experience-tab">
+      <ul>
+       <li>
+        <span>
+         C++ Intern
+        </span>
+        <br/>
+        CodSoft - Worked on algorithm-based projects and code optimization
+       </li>
+       <li>
+        <span>
+         Project Intern
+        </span>
+        <br/>
+        Supervised by Microsoft employee for Mars Rover simulation project
+       </li>
+      </ul>
+     </div>
+     <div class="tab-contents" id="education-tab">
+      <ul>
+       <li>
+        <span>
+         B.Tech in Computer Science
+        </span>
+        <br/>
+        KIIT Bhubaneswar (2022–2026)
+       </li>
+       <li>
+        <span>
+         Class 12
+        </span>
+        <br/>
+        Munam Public School,Hazaribagh (2022)
+       </li>
+       <li>
+        <span>
+         Class 10
+        </span>
+        <br/>
+        Holy Cross School,Hazaribagh (2020)
+       </li>
+      </ul>
+     </div>
+    </div>
+   </div>
   </section>
-
-  <section id="contact" class="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:prakhar6122@gmail.com">prakhar6122@gmail.com</a></p>
-    <p>GitHub: <a href =https://github.com/prakharrrrrrsingh>https://github.com/prakharrrrrrsingh</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/prakharrrrr-singh-/">https://www.linkedin.com/in/prakharrrrr-singh-/</a></p>
-    <p>Phone: 8294300257</p>
+  <!-- Skills Section -->
+  <section class="skills" id="skills">
+   <div class="heading">
+    <h2>
+     My Skills
+    </h2>
+   </div>
+   <div class="skill-container">
+    <div class="skill-box">
+     <h3>
+      Languages
+     </h3>
+     <ul>
+      <li>
+       C++
+      </li>
+      <li>
+       JavaScript
+      </li>
+      <li>
+       Python
+      </li>
+     </ul>
+    </div>
+    <div class="skill-box">
+     <h3>
+      Frontend
+     </h3>
+     <ul>
+      <li>
+       React.js
+      </li>
+      <li>
+       HTML5
+      </li>
+      <li>
+       CSS3
+      </li>
+      <li>
+       Tailwind CSS
+      </li>
+     </ul>
+    </div>
+    <div class="skill-box">
+     <h3>
+      Backend
+     </h3>
+     <ul>
+      <li>
+       Node.js
+      </li>
+      <li>
+       Express.js
+      </li>
+      <li>
+       MongoDB
+      </li>
+     </ul>
+    </div>
+    <div class="skill-box">
+     <h3>
+      Tools &amp; Technologies
+     </h3>
+     <ul>
+      <li>
+       Git
+      </li>
+      <li>
+       GitHub
+      </li>
+      <li>
+       Firebase
+      </li>
+      <li>
+       Electron.js
+      </li>
+     </ul>
+    </div>
+    <div class="skill-box">
+     <h3>
+      Other Skills
+     </h3>
+     <ul>
+      <li>
+       Data Structures &amp; Algorithms
+      </li>
+      <li>
+       JWT
+      </li>
+      <li>
+       REST APIs
+      </li>
+      <li>
+       Basic ML (ARIMA, K-Means)
+      </li>
+     </ul>
+    </div>
+   </div>
   </section>
-
+  <!-- Projects Section -->
+  <section class="projects" id="projects">
+   <div class="heading">
+    <h2>
+     My Projects
+    </h2>
+   </div>
+   <div class="project-container">
+    <div class="project-box">
+     <div class="project-img">
+      <i class="fas fa-file-code">
+      </i>
+     </div>
+     <div class="project-content">
+      <h3>
+       Duplicate File Remover
+      </h3>
+      <p>
+       An Electron.js desktop application that detects and deletes duplicate files from folders, helping users clean up storage space efficiently.
+      </p>
+      <a class="btn" href="https://github.com/prakharrrrrrsingh/duplicate-remover-app">
+       View Project
+      </a>
+     </div>
+    </div>
+    <div class="project-box">
+     <div class="project-img">
+      <i class="fas fa-robot">
+      </i>
+     </div>
+     <div class="project-content">
+      <h3>
+       Navigation to Mars Rover
+      </h3>
+      <p>
+       A pathfinding web application using algorithms like A*, Dijkstra's, BFS, and DFS to simulate rover movement on Mars terrain.
+      </p>
+      <a class="btn" href="https://github.com/prakharrrrrrsingh/NavigationMarsRover">
+       View Project
+      </a>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Education Section -->
+  <section class="education" id="education">
+   <div class="heading">
+    <h2>
+     Education &amp; Experience
+    </h2>
+   </div>
+   <div class="timeline">
+    <div class="container left">
+     <div class="content">
+      <h3>
+       B.Tech in Computer Science
+      </h3>
+      <h4>
+       KIIT Bhubaneswar (2022–2026)
+      </h4>
+     </div>
+    </div>
+    <div class="container right">
+     <div class="content">
+      <h3>
+       Project
+      </h3>
+      <h4>
+       Mars Rover Simulation Project
+      </h4>
+      <p>
+       Supervised by Microsoft employee for Mars Rover simulation project.
+      </p>
+     </div>
+    </div>
+    <div class="container right">
+     <div class="content">
+      <h3>
+       C++ Intern
+      </h3>
+      <h4>
+       CodSoft
+      </h4>
+      <p>
+       Worked on algorithm-based projects and code optimization.
+      </p>
+     </div>
+    </div>
+    <div class="container left">
+     <div class="content">
+      <h3>
+       Class 12
+      </h3>
+      <h4>
+       Munam Public School, Hazaribagh (2022)
+      </h4>
+     </div>
+    </div>
+    <div class="container left">
+     <div class="content">
+      <h3>
+       Class 10
+      </h3>
+      <h4>
+       Holy Cross School, Hazaribagh (2020)
+      </h4>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+   <div class="heading">
+    <h2>
+     Contact Me
+    </h2>
+   </div>
+   <div class="contact-info">
+    <div class="contact-card">
+     <i class="fas fa-envelope">
+     </i>
+     <h3>
+      Email
+     </h3>
+     <p>
+      prakhar6122@gmail.com
+     </p>
+    </div>
+    <div class="contact-card">
+     <i class="fab fa-github">
+     </i>
+     <h3>
+      GitHub
+     </h3>
+     <p>
+      github.com/prakharrrrrrsingh
+     </p>
+    </div>
+    <div class="contact-card">
+     <i class="fab fa-linkedin-in">
+     </i>
+     <h3>
+      LinkedIn
+     </h3>
+     <p>
+      linkedin.com/in/prakharrrrr-singh-/
+     </p>
+    </div>
+   </div>
+   <div class="contact-form">
+    <form>
+     <div class="input-row">
+      <div class="input-group">
+       <input placeholder="Your Name" required="" type="text"/>
+      </div>
+      <div class="input-group">
+       <input placeholder="Your Email" required="" type="email"/>
+      </div>
+     </div>
+     <input placeholder="Subject" required="" type="text"/>
+     <textarea placeholder="Your Message" required="" rows="5"></textarea>
+     <button type="submit">
+      Send Message
+     </button>
+    </form>
+   </div>
+  </section>
+  <!-- Footer -->
   <footer>
-    <p>© 2025 Prakhar Singh. All rights reserved.</p>
+   <p>
+    © 2025 Prakhar Singh. All Rights Reserved.
+   </p>
   </footer>
-</body>
+  <script>
+   // Tab functionality
+        function openTab(tabName) {
+            var tabLinks = document.getElementsByClassName('tab-links');
+            var tabContents = document.getElementsByClassName('tab-contents');
+            
+            for (let tabLink of tabLinks) {
+                tabLink.classList.remove('active-link');
+            }
+            
+            for (let tabContent of tabContents) {
+                tabContent.classList.remove('active-tab');
+            }
+            
+            event.currentTarget.classList.add('active-link');
+            document.getElementById(tabName + '-tab').classList.add('active-tab');
+        }
+
+        // Smooth scrolling for navbar links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Active nav link based on scroll position
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.navbar a');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                const id = section.getAttribute('id');
+                
+                if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+  </script>
+ </body>
 </html>
